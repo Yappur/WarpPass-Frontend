@@ -7,7 +7,7 @@ const HomePage = () => {
       <div className="hero text-black bg-white">
         <div className="hero-content flex-col lg:flex-row">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+            src="https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/03/09112202/Los-Redondos-vieja-1920.jpg"
             className="max-w-sm rounded-lg shadow-2xl"
           />
           <div>

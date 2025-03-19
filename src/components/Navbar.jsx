@@ -32,9 +32,30 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end gap-2">
-        <a className="btn">Iniciar Sesion</a>
-        <a className="btn">Registrarse</a>
+        <button className="btn bg-[#2F314E] shadow-lg shadow-indigo-500/50">
+          <a href="/login">Iniciar Sesion</a>
+        </button>
+        <button className="btn bg-[#2F314E] shadow-lg shadow-indigo-500/50">
+          <a href="/register">Registrarse</a>
+        </button>
       </div>
+
+      <button class="md:hidden text-white">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"
+          />
+        </svg>
+      </button>
     </div>
   );
 };
