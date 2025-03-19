@@ -1,7 +1,8 @@
 @import "tailwindcss";
-body {
-  margin: 0;
-  display: flex;
-  background-color: #2f314e;
-  color: #fff;
+@plugin "daisyui";
+
+@layer base {
+  body {
+    @apply text-white;
+  }
 }
