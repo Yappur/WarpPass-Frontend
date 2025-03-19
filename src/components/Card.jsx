@@ -13,13 +13,13 @@ const Card = () => {
           />
         </figure>
         <div className="card-body text-black ">
-          <p className="text-[#444444] flex items-center gap-1 bg-gray-100 p-2 rounded-lg w-30">
+          <p className="text-[#444444] flex gap-1 bg-gray-100 p-2 rounded-lg w-30">
             {" "}
             <FaLocationDot className="text-lg" />
             UBICACION
           </p>
-          <h2 className="card-title">Card Title</h2>
-          <h3>Fecha</h3>
+          <h2 className="card-title">Festival</h2>
+          <h2>Fecha</h2>
         </div>
       </div>
     </a>

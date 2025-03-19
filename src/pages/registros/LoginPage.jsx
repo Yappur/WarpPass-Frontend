@@ -1,7 +1,11 @@
 import React from "react";
+import FormRegisterLogin from "../../components/Formularios/FormRegisterLogin";
 
 const LoginPage = () => {
-  return <div>LoginPage</div>;
+  return;
+  <>
+    <FormRegisterLogin />
+  </>;
 };
 
 export default LoginPage;
