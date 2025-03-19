@@ -3,6 +3,6 @@
 
 @layer base {
   body {
-    @apply text-white;
+    @apply bg-[#c4c4c4] text-white;
   }
 }
