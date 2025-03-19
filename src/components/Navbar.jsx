@@ -5,7 +5,7 @@ const Navbar = () => {
     <div className="navbar bg-[#2f314e] shadow-sm">
       <div className="navbar-start">
         <a className="" href="/">
-          <figure>
+          <figure className="flex">
             <img
               src="/warp.png"
               alt="logo"
@@ -31,11 +31,11 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="navbar-end gap-2">
-        <button className="btn bg-[#2F314E] shadow-lg shadow-indigo-500/50">
+      <div className="navbar-end gap-2 ">
+        <button className="btn bg-[#2F314E] shadow-lg shadow-indigo-500/50 hover:bg-[#1A1B2D] transition-colors duration-300">
           <a href="/login">Iniciar Sesion</a>
         </button>
-        <button className="btn bg-[#2F314E] shadow-lg shadow-indigo-500/50">
+        <button className="btn bg-[#2F314E] shadow-lg shadow-indigo-500/50 hover:bg-[#1A1B2D] transition-colors duration-300">
           <a href="/register">Registrarse</a>
         </button>
       </div>

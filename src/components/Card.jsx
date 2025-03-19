@@ -3,7 +3,7 @@ import { FaLocationDot } from "react-icons/fa6";
 
 const Card = () => {
   return (
-    <a href="/verEvento">
+    <a href="/ver/evento">
       <div className="card bg-white shadow-lg hover:shadow-5xl transition-shadow hover:-translate-y-2 transition-transform duration-600">
         <figure>
           <img
@@ -20,11 +20,6 @@ const Card = () => {
           </p>
           <h2 className="card-title">Card Title</h2>
           <h3>Fecha</h3>
-          {/* <div className="card-actions ">
-          <button className="btn bg-[#2F314E] shadow-lg shadow-indigo-500/50">
-            <a href="/about">Ver Detalles</a>
-          </button>
-        </div> */}
         </div>
       </div>
     </a>

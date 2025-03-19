@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../components/Card";
+import { IoTicket } from "react-icons/io5";
 
 const HomePage = () => {
   return (
@@ -11,9 +12,13 @@ const HomePage = () => {
             className="max-w-sm rounded-lg shadow-2xl"
           />
           <div>
-            <h1 className="text-5xl font-bold">Bienvenido a WarpPass!</h1>
+            <h1 className="text-5xl font-bold flex">
+              Bienvenido a WarpPass! <IoTicket className="text-[#b2b205]" />
+            </h1>
             <p className="py-6">Tu sitio de venta de entradas Favorito</p>
-            <button className="btn btn-primary">Mira los eventos</button>
+            <button className="btn bg-[#2F314E] shadow-lg shadow-indigo-500/50 hover:bg-[#1A1B2D] transition-colors duration-300">
+              <a href="/eventos">Mira los eventos</a>
+            </button>
           </div>
         </div>
       </div>
