@@ -1,9 +1,37 @@
-import React from "react";
+import { useState } from "react";
+import axiosConfig from "../../helpers/axios.config";
 
 const FormRegisterLogin = () => {
+  const [nombre, setNombre] = useState("");
+  const [email, setEmail] = useState("");
+  const [contrasenia, setContrasenia] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (nombre === "" || !email || !contrasenia) {
+      return console.log("error");
+    }
+    registrarUsuario(nombre, email, contrasenia);
+  };
+
+  const registrarUsuario = async (nombre, email, contrasenia) => {
+    try {
+      const response = await axiosConfig.post("/usuarios/crearUsuario", {
+        nombre,
+        email,
+        contrasenia,
+      });
+      if (response.status === 201) {
+        alert("Usuario creado exitosamente");
+      }
+    } catch (error) {
+      setErrorMsg(error.response.data.msg);
+    }
+  };
+
   return (
     <>
-      <div className="container ml-auto mr-auto flex items-center justify-center">
+      <div className="container ml-auto mr-auto flex items-center justify-center mt-25">
         <div className="w-full md:w-1/2">
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className="mb-4">
@@ -22,6 +50,7 @@ const FormRegisterLogin = () => {
                     type="text"
                     required
                     placeholder="Carlos Rodriguez"
+                    onChange={(e) => setNombre(e.target.value)}
                   />
                 </div>
                 {/* email */}
@@ -38,6 +67,7 @@ const FormRegisterLogin = () => {
                     type="email"
                     required
                     placeholder="Carlos@gmail.com"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
               </div>
@@ -55,12 +85,13 @@ const FormRegisterLogin = () => {
                 type="password"
                 required
                 placeholder="********"
+                onChange={(e) => setContrasenia(e.target.value)}
               />
               <p className="text-gray-500 text-sm">
                 La contraseña tiene que tener 8 digitos y un numero
               </p>
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
                 for="contrasenia"
@@ -73,10 +104,19 @@ const FormRegisterLogin = () => {
                 type="password"
                 required
                 placeholder="********"
+                onChange={(e) => setContrasenia(e.target.value)}
               />
               <p className="text-gray-500 text-sm">
                 Las contraseñas tiene que ser iguales
               </p>
+            </div> */}
+            <div>
+              <button
+                className="bg-[#2F314E] hover:bg-[#1A1B2D] text-white font-bold py-2 px-4 rounded"
+                onClick={handleSubmit}
+              >
+                Registrarse
+              </button>
             </div>
           </form>
         </div>
