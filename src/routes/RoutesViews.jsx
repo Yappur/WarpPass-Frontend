@@ -7,6 +7,7 @@ import LoginPage from "../pages/registros/LoginPage";
 import RegisterPage from "../pages/registros/RegisterPage";
 import GaleriaEventos from "../pages/eventos/GaleriaEventos";
 import VerEvento from "../pages/eventos/VerEvento";
+import CrearEvento from "../pages/eventos/CrearEvento";
 
 const RoutesViews = () => {
   return (
@@ -18,8 +19,9 @@ const RoutesViews = () => {
         <Route path="contacto" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/eventos" element={<GaleriaEventos />} />
-        <Route path="/ver/evento" element={<VerEvento />} />
+        {/* <Route path="/eventos" element={<GaleriaEventos />} /> */}
+        {/* <Route path="/ver/evento" element={<VerEvento />} /> */}
+        <Route path="/eventos" element={<CrearEvento />} />
       </Routes>
     </>
   );
