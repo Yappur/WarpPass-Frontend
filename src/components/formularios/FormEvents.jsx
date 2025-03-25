@@ -12,10 +12,14 @@ const FormEvents = () => {
   const [imagen, setImagen] = useState("");
 
   const [errorMsg, setErrorMsg] = useState("");
-  const handleSubmit = (e) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMsg("");
+
     if (
-      titulo === "" ||
+      !titulo ||
       !descripcion ||
       !lugar ||
       !fecha ||
@@ -24,46 +28,42 @@ const FormEvents = () => {
       !cantidad ||
       !imagen
     ) {
-      return console.log("error");
+      setErrorMsg("Todos los campos son requeridos");
+      return;
     }
-    registrarEvento(
-      titulo,
-      descripcion,
-      lugar,
-      fecha,
-      hora,
-      precio,
-      cantidad,
-      imagen
-    );
-  };
 
-  const registrarEvento = async (
-    titulo,
-    descripcion,
-    lugar,
-    fecha,
-    hora,
-    precio,
-    cantidad,
-    imagen
-  ) => {
     try {
+      setIsLoading(true);
       const response = await axiosConfig.post("/eventos/crearEvento", {
         titulo,
         descripcion,
         lugar,
         fecha,
         hora,
-        precio,
-        cantidad,
+        precio: parseFloat(precio),
+        cantidad: parseInt(cantidad),
         imagen,
       });
+
       if (response.status === 201) {
         alert("Evento creado exitosamente");
+
+        setTitulo("");
+        setDescripcion("");
+        setLugar("");
+        setFecha("");
+        setHora("");
+        setPrecio("");
+        setCantidad("");
+        setImagen("");
       }
     } catch (error) {
-      setErrorMsg(error.response.data.msg);
+      setErrorMsg(
+        error.response?.data?.msg ||
+          "Error al crear el evento. Intente nuevamente."
+      );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -71,23 +71,29 @@ const FormEvents = () => {
     <>
       <div className="container ml-auto mr-auto flex items-center justify-center mt-25">
         <div className="w-full md:w-1/2">
-          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <form
+            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            onSubmit={handleSubmit}
+          >
+            {errorMsg && (
+              <div className="mb-4 text-red-500 text-sm">{errorMsg}</div>
+            )}
             <div className="mb-4">
               <div className="grid grid-flow-row sm:grid-flow-col gap-6">
-                {/* Titulo */}
                 <div className="sm::col-span-4 justify-center">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
-                    for="nya"
+                    htmlFor="titulo"
                   >
                     Titulo
                   </label>
                   <input
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="nya"
+                    id="titulo"
                     type="text"
                     required
                     placeholder="Titulo"
+                    value={titulo}
                     onChange={(e) => setTitulo(e.target.value)}
                   />
                 </div>
@@ -204,7 +210,7 @@ const FormEvents = () => {
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
-                for="imagen"
+                htmlFor="imagen"
               >
                 Imagen
               </label>
@@ -214,16 +220,18 @@ const FormEvents = () => {
                 id="imagen"
                 required
                 placeholder="https://example.com"
-                onChange={(e) => setDescripcion(e.target.value)}
+                value={imagen}
+                onChange={(e) => setImagen(e.target.value)}
               />
             </div>
 
             <div>
               <button
                 className="bg-[#2F314E] hover:bg-[#1A1B2D] text-white font-bold py-2 px-4 rounded"
-                onClick={handleSubmit}
+                type="submit"
+                disabled={isLoading}
               >
-                Subir Evento
+                {isLoading ? "Subiendo..." : "Subir Evento"}
               </button>
             </div>
           </form>
