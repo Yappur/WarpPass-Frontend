@@ -8,6 +8,8 @@ import RegisterPage from "../pages/registros/RegisterPage";
 import GaleriaEventos from "../pages/eventos/GaleriaEventos";
 import VerEvento from "../pages/eventos/VerEvento";
 import CrearEvento from "../pages/eventos/CrearEvento";
+import HomeAdmin from "../pages/AdminPages/HomeAdmin";
+import PanelsUsers from "../pages/AdminPages/PanelsUsers";
 
 const RoutesViews = () => {
   return (
@@ -15,6 +17,8 @@ const RoutesViews = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={<App404 />} />
+        <Route path="/admin" element={<HomeAdmin />} />
+        <Route path="/admin/panelUsers" element={<PanelsUsers />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="contacto" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
