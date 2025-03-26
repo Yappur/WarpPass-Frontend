@@ -9,7 +9,8 @@ import GaleriaEventos from "../pages/eventos/GaleriaEventos";
 import VerEvento from "../pages/eventos/VerEvento";
 import CrearEvento from "../pages/eventos/CrearEvento";
 import HomeAdmin from "../pages/AdminPages/HomeAdmin";
-import PanelsUsers from "../pages/AdminPages/PanelsUsers";
+import PanelUsers from "../pages/AdminPages/PanelUsers";
+import PanelEvents from "../pages/AdminPages/PanelEvents";
 
 const RoutesViews = () => {
   return (
@@ -18,7 +19,8 @@ const RoutesViews = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={<App404 />} />
         <Route path="/admin" element={<HomeAdmin />} />
-        <Route path="/admin/panelUsers" element={<PanelsUsers />} />
+        <Route path="/admin/panelUsers" element={<PanelUsers />} />
+        <Route path="/admin/panelEvents" element={<PanelEvents />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="contacto" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />

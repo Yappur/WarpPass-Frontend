@@ -1,7 +1,7 @@
 import React from "react";
-import UserTables from "../../components/Tables/UserTables";
+import UserTables from "../../components/Tables/UserTable";
 
-const PanelsUsers = () => {
+const PanelUsers = () => {
   return (
     <>
       <div className="text-center text-3xl font-bold text-[#b2b205] p-4">
@@ -14,4 +14,4 @@ const PanelsUsers = () => {
   );
 };
 
-export default PanelsUsers;
+export default PanelUsers;

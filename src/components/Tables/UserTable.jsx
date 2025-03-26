@@ -20,9 +20,9 @@ const UserTables = () => {
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table table-xs">
+        <table className="table">
           <thead>
-            <tr>
+            <tr className="text-[#b2b205] uppercase">
               <th>Nombre</th>
               <th>Email</th>
               <th>Rol</th>
@@ -40,14 +40,6 @@ const UserTables = () => {
               );
             })}
           </tbody>
-          <tfoot>
-            <tr>
-              <th>Nombre</th>
-              <th>Email</th>
-              <th>Rol</th>
-              <th>Acciones</th>
-            </tr>
-          </tfoot>
         </table>
       </div>
       ;
