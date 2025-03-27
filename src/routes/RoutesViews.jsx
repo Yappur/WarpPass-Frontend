@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import App404 from "../pages/App404";
 import AboutPage from "../pages/staticPages/AboutPage";
@@ -12,24 +12,72 @@ import HomeAdmin from "../pages/AdminPages/HomeAdmin";
 import PanelUsers from "../pages/AdminPages/PanelUsers";
 import PanelEvents from "../pages/AdminPages/PanelEvents";
 
+const RutaProtegida = ({ children, RolesPermitidos }) => {
+  const token = sessionStorage.getItem("token");
+  const userRole = sessionStorage.getItem("role");
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (RolesPermitidos && !RolesPermitidos.includes(userRole)) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
+
 const RoutesViews = () => {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="*" element={<App404 />} />
-        <Route path="/admin" element={<HomeAdmin />} />
-        <Route path="/admin/panelUsers" element={<PanelUsers />} />
-        <Route path="/admin/panelEvents" element={<PanelEvents />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="contacto" element={<ContactPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        {/* <Route path="/eventos" element={<GaleriaEventos />} /> */}
-        {/* <Route path="/ver/evento" element={<VerEvento />} /> */}
-        <Route path="/eventos" element={<CrearEvento />} />
-      </Routes>
-    </>
+    <Routes>
+      {/* Rutas públicas */}
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contacto" element={<ContactPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/eventos" element={<GaleriaEventos />} />
+      <Route path="/eventos/:id" element={<VerEvento />} />
+
+      {/* Rutas de productor */}
+      <Route
+        path="/eventos/crearEvento"
+        element={
+          <RutaProtegida RolesPermitidos={["productor", "admin"]}>
+            <CrearEvento />
+          </RutaProtegida>
+        }
+      />
+
+      {/* Rutas de administrador */}
+      <Route
+        path="/admin"
+        element={
+          <RutaProtegida RolesPermitidos={["admin"]}>
+            <HomeAdmin />
+          </RutaProtegida>
+        }
+      />
+      <Route
+        path="/admin/panelUsers"
+        element={
+          <RutaProtegida RolesPermitidos={["admin"]}>
+            <PanelUsers />
+          </RutaProtegida>
+        }
+      />
+      <Route
+        path="/admin/panelEvents"
+        element={
+          <RutaProtegida RolesPermitidos={["admin"]}>
+            <PanelEvents />
+          </RutaProtegida>
+        }
+      />
+
+      {/* Ruta 404 al final */}
+      <Route path="*" element={<App404 />} />
+    </Routes>
   );
 };
 
