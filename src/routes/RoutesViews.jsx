@@ -14,7 +14,7 @@ import PanelEvents from "../pages/AdminPages/PanelEvents";
 
 const RutaProtegida = ({ children, RolesPermitidos }) => {
   const token = sessionStorage.getItem("token");
-  const userRole = sessionStorage.getItem("role");
+  const userRole = sessionStorage.getItem("rol");
 
   if (!token) {
     return <Navigate to="/login" replace />;

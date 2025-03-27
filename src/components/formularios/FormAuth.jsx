@@ -2,7 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosConfig from "../../helpers/axios.config";
 
-const FormRegisterLogin = ({ isLogin = false }) => {
+const ROL_ROUTES = {
+  admin: "/admin",
+  usuario: "/",
+  productor: "/",
+};
+
+const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -101,11 +107,9 @@ const FormRegisterLogin = ({ isLogin = false }) => {
       });
 
       if (response.status === 201) {
-        // Redirigir a página de login después del registro
-        navigate("/login");
+        navigate(redirectPath);
       }
     } catch (error) {
-      // Manejar errores de registro
       setErrors({
         serverError: error.response?.data?.msg || "Error al crear el usuario",
       });
@@ -123,17 +127,19 @@ const FormRegisterLogin = ({ isLogin = false }) => {
         email: formData.email,
         contrasenia: formData.contrasenia,
       });
-
       if (response.data.token) {
-        // Guardar token y rol
         sessionStorage.setItem("token", response.data.token);
-        sessionStorage.setItem("role", response.data.role);
+        sessionStorage.setItem("rol", response.data.rol);
 
-        // Redirigir según el rol
-        if (response.data.role === "admin") {
-          navigate("/admin");
+        const routeForRol = ROL_ROUTES[response.data.rol];
+
+        if (routeForRol) {
+          navigate(routeForRol);
         } else {
           navigate("/");
+          setErrors({
+            serverError: "Rol no reconocido",
+          });
         }
       }
     } catch (error) {

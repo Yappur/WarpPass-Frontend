@@ -4,12 +4,7 @@ import FormAuth from "../../components/formularios/FormAuth";
 const LoginPage = () => {
   return (
     <>
-      <FormAuth
-        isLogin={true}
-        showNameField={false}
-        submitButtonText="Iniciar Sesión"
-        redirectPath="/"
-      />
+      <FormAuth isLogin={true} />
     </>
   );
 };
