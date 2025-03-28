@@ -25,18 +25,18 @@ const EventsTable = () => {
     setIsModalOpen(true);
   };
 
-  const handleDelete = async (eventoId) => {
+  const handleDelete = async (id) => {
     try {
-      await axiosConfig.delete(`/eventos/eliminarEvento/${eventoId}`);
-      // Refresh the events list after deletion
-      listaEventos();
+      const response = await axiosConfig.delete(
+        `/eventos/eliminarEvento/${id}`
+      );
+      alert(response.data.msg);
     } catch (error) {
-      console.log("Error al eliminar:", error);
+      console.log(error);
     }
   };
 
   const handleUpdateEvent = (updatedEvento) => {
-    // Update the events list with the updated event
     setcargarEventos((prevEventos) =>
       prevEventos.map((evento) =>
         evento._id === updatedEvento._id ? updatedEvento : evento

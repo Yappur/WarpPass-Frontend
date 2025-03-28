@@ -47,7 +47,7 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
               type="text"
               name="titulo"
               value={formData.titulo}
-              onChange={handleChange}
+              onChange={(e) => handleChange("titulo", e.target.value)}
               placeholder="Título"
               className="input input-bordered w-full"
               required
@@ -55,7 +55,7 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
             <textarea
               name="descripcion"
               value={formData.descripcion}
-              onChange={handleChange}
+              onChange={(e) => handleChange("descripcion", e.target.value)}
               placeholder="Descripción"
               className="textarea textarea-bordered w-full"
               required
@@ -64,7 +64,7 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
               type="text"
               name="lugar"
               value={formData.lugar}
-              onChange={handleChange}
+              onChange={(e) => handleChange("lugar", e.target.value)}
               placeholder="Lugar"
               className="input input-bordered w-full"
               required
@@ -73,7 +73,7 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
               type="date"
               name="fecha"
               value={formData.fecha}
-              onChange={handleChange}
+              onChange={(e) => handleChange("fecha", e.target.value)}
               className="input input-bordered w-full"
               required
             />
@@ -81,7 +81,7 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
               type="time"
               name="hora"
               value={formData.hora}
-              onChange={handleChange}
+              onChange={(e) => handleChange("hora", e.target.value)}
               className="input input-bordered w-full"
               required
             />
@@ -89,7 +89,7 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
               type="number"
               name="precio"
               value={formData.precio}
-              onChange={handleChange}
+              onChange={(e) => handleChange("precio", e.target.value)}
               placeholder="Precio"
               className="input input-bordered w-full"
               required
@@ -98,7 +98,7 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
               type="number"
               name="cantidad"
               value={formData.cantidad}
-              onChange={handleChange}
+              onChange={(e) => handleChange("cantidad", e.target.value)}
               placeholder="Cantidad"
               className="input input-bordered w-full"
               required
@@ -107,7 +107,7 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
               type="text"
               name="imagen"
               value={formData.imagen}
-              onChange={handleChange}
+              onChange={(e) => handleChange("", e.target.value)}
               placeholder="URL de Imagen"
               className="input input-bordered w-full"
             />
