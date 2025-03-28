@@ -153,7 +153,7 @@ const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
   return (
     <div className="container ml-auto mr-auto flex items-center justify-center mt-25">
       <div className="w-full md:w-1/2">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 mb-4">
           {/* Campos de registro */}
           {!isLogin && (
             <div className="mb-4">

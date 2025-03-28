@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axiosConfig from "../../helpers/axios.config";
 
 const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
@@ -25,23 +25,22 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
     e.preventDefault();
     try {
       const response = await axiosConfig.put(
-        `/eventos/actualizar/${evento._id}`,
+        `/eventos/editarEvento/${evento._id}`,
         formData
       );
-      onUpdate(response.data); // Update the event in parent component
-      onClose(); // Close the modal
+      onUpdate(response.data);
+      onClose();
     } catch (error) {
       console.error("Error updating event:", error);
-      // Optionally, show an error message to the user
     }
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg w-full max-w-md">
-        <h2 className="text-2xl mb-4">Editar Evento</h2>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50 overflow-y-auto">
+      <div className="bg-white p-6 rounded-lg w-full max-w-md m-4">
+        <h2 className="text-2xl mb-4 textStyle">Editar Evento</h2>
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
             <input
@@ -114,10 +113,14 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
             />
           </div>
           <div className="flex justify-end mt-6 space-x-2">
-            <button type="button" onClick={onClose} className="btn btn-ghost">
+            <button
+              type="button"
+              onClick={onClose}
+              className="btn  btn-primary textStyle"
+            >
               Cancelar
             </button>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn  btn-primary textStyle">
               Guardar Cambios
             </button>
           </div>

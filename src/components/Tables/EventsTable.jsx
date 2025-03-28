@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axiosConfig from "../../helpers/axios.config";
+import EventModal from "../Modals/EventModal";
 
 const EventsTable = () => {
   const [cargarEventos, setcargarEventos] = useState([]);
+  const [selectedEvento, setSelectedEvento] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const listaEventos = async () => {
     try {
       const response = await axiosConfig.get("/eventos/obtenerEventos");
@@ -17,14 +20,34 @@ const EventsTable = () => {
     listaEventos();
   }, []);
 
-  const handleEdit = () => {
-    console.log(response.data);
+  const handleEdit = (evento) => {
+    setSelectedEvento(evento);
+    setIsModalOpen(true);
   };
 
-  const handleDelete = () => {
-    console.log("Eliminar");
+  const handleDelete = async (eventoId) => {
+    try {
+      await axiosConfig.delete(`/eventos/eliminarEvento/${eventoId}`);
+      // Refresh the events list after deletion
+      listaEventos();
+    } catch (error) {
+      console.log("Error al eliminar:", error);
+    }
   };
 
+  const handleUpdateEvent = (updatedEvento) => {
+    // Update the events list with the updated event
+    setcargarEventos((prevEventos) =>
+      prevEventos.map((evento) =>
+        evento._id === updatedEvento._id ? updatedEvento : evento
+      )
+    );
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedEvento(null);
+  };
   return (
     <>
       <div className="overflow-x-auto">
@@ -57,11 +80,14 @@ const EventsTable = () => {
                   <td>
                     <button
                       className="btn bg-blue-600 mr-2"
-                      onClick={() => handleEdit()}
+                      onClick={() => handleEdit(evento)}
                     >
                       Editar
                     </button>
-                    <button className="btn bg-red-600" onClick={handleDelete}>
+                    <button
+                      className="btn bg-red-600"
+                      onClick={() => handleDelete(evento._id)}
+                    >
                       Eliminar
                     </button>
                   </td>
@@ -71,6 +97,14 @@ const EventsTable = () => {
           </tbody>
         </table>
       </div>
+      {selectedEvento && (
+        <EventModal
+          evento={selectedEvento}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          onUpdate={handleUpdateEvent}
+        />
+      )}
     </>
   );
 };

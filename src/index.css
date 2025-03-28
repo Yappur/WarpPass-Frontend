@@ -16,3 +16,8 @@
   color: transparent;
   font-weight: bold;
 }
+
+body {
+  background: linear-gradient(135deg, #111861, #ffff, #925800);
+  min-height: 100vh;
+}
