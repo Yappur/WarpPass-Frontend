@@ -16,6 +16,15 @@ const EventsTable = () => {
   useEffect(() => {
     listaEventos();
   }, []);
+
+  const handleEdit = () => {
+    console.log(response.data);
+  };
+
+  const handleDelete = () => {
+    console.log("Eliminar");
+  };
+
   return (
     <>
       <div className="overflow-x-auto">
@@ -45,7 +54,17 @@ const EventsTable = () => {
                   <td>{evento.precio}</td>
                   <td>{evento.cantidad}</td>
                   <td>{evento.imagen}</td>
-                  <td></td>
+                  <td>
+                    <button
+                      className="btn bg-blue-600 mr-2"
+                      onClick={() => handleEdit()}
+                    >
+                      Editar
+                    </button>
+                    <button className="btn bg-red-600" onClick={handleDelete}>
+                      Eliminar
+                    </button>
+                  </td>
                 </tr>
               );
             })}

@@ -283,6 +283,13 @@ const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
               {isLogin ? "Iniciar Sesión" : "Registrarse"}
             </button>
           </div>
+          <div>
+            <p className="text-center text-[#b2b205]">
+              <a href="">
+                {isLogin ? "Ya tenes cuenta? Incia sesion" : "Iniciar Sesión"}
+              </a>
+            </p>
+          </div>
         </form>
       </div>
     </div>
