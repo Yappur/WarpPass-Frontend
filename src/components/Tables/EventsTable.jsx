@@ -36,7 +36,7 @@ const EventsTable = () => {
     }
   };
 
-  const handleUpdateEvent = (updatedEvento) => {
+  const handleUpdateEventoDB = (updatedEvento) => {
     setcargarEventos((prevEventos) =>
       prevEventos.map((evento) =>
         evento._id === updatedEvento._id ? updatedEvento : evento
@@ -79,7 +79,7 @@ const EventsTable = () => {
                   <td>{evento.imagen}</td>
                   <td>
                     <button
-                      className="btn bg-blue-600 mr-2"
+                      className="btn bg-blue-600 mr-2 "
                       onClick={() => handleEdit(evento)}
                     >
                       Editar
@@ -102,7 +102,7 @@ const EventsTable = () => {
           evento={selectedEvento}
           isOpen={isModalOpen}
           onClose={handleCloseModal}
-          onUpdate={handleUpdateEvent}
+          onUpdate={handleUpdateEventoDB}
         />
       )}
     </>

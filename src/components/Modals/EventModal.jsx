@@ -13,12 +13,11 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
     imagen: evento.imagen || "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+  const handleChange = (propiedad, valor) => {
+    setFormData({
+      ...formData,
+      [propiedad]: valor,
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -38,7 +37,7 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto">
       <div className="bg-white p-6 rounded-lg w-full max-w-md m-4">
         <h2 className="text-2xl mb-4 textStyle">Editar Evento</h2>
         <form onSubmit={handleSubmit}>
@@ -107,7 +106,7 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
               type="text"
               name="imagen"
               value={formData.imagen}
-              onChange={(e) => handleChange("", e.target.value)}
+              onChange={(e) => handleChange("imagen", e.target.value)}
               placeholder="URL de Imagen"
               className="input input-bordered w-full"
             />
@@ -116,11 +115,11 @@ const EventModal = ({ evento, isOpen, onClose, onUpdate }) => {
             <button
               type="button"
               onClick={onClose}
-              className="btn  btn-primary textStyle"
+              className="btn btn-primary textStyle"
             >
               Cancelar
             </button>
-            <button type="submit" className="btn  btn-primary textStyle">
+            <button type="submit" className="btn btn-primary textStyle">
               Guardar Cambios
             </button>
           </div>
