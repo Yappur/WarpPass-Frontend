@@ -20,7 +20,7 @@ const UserTables = () => {
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table w-[75%] mx-auto text-white text-sm font-semibold shadow-xl shadow-indigo-500/50 hover:shadow-2xl bg-[#1a1b2d]">
           <thead>
             <tr className="text-[#b2b205] uppercase">
               <th>Nombre</th>

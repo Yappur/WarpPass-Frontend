@@ -50,8 +50,8 @@ const EventsTable = () => {
   };
   return (
     <>
-      <div className="overflow-x-auto">
-        <table className="table ">
+      <div className="overflow-x-auto  ">
+        <table className="table bg-[#1a1b2d] w-[75%] mx-auto text-white text-sm font-semibold shadow-xl shadow-indigo-500/50 hover:shadow-2xl">
           <thead>
             <tr className="text-[#b2b205] uppercase">
               <th>titulo</th>
