@@ -11,6 +11,7 @@ import CrearEvento from "../pages/eventos/CrearEvento";
 import HomeAdmin from "../pages/AdminPages/HomeAdmin";
 import PanelUsers from "../pages/AdminPages/PanelUsers";
 import PanelEvents from "../pages/AdminPages/PanelEvents";
+import MiPerfil from "../pages/userPages/MiPerfil";
 
 const RutaProtegida = ({ children, RolesPermitidos }) => {
   const token = sessionStorage.getItem("token");
@@ -38,6 +39,16 @@ const RoutesViews = () => {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/eventos" element={<GaleriaEventos />} />
       <Route path="/eventos/:id" element={<VerEvento />} />
+
+      {/* Rutas de usuario */}
+      <Route
+        path="/perfil"
+        element={
+          <RutaProtegida RolesPermitidos={["usuario", "productor", "admin"]}>
+            <MiPerfil />
+          </RutaProtegida>
+        }
+      />
 
       {/* Rutas de productor */}
       <Route
