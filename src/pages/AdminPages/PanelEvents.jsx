@@ -1,7 +1,9 @@
 import React from "react";
 import EventTables from "../../components/Tables/EventsTable";
+import { cambiarTitulo } from "../../helpers/cambiarTitulos";
 
 const PanelEvents = () => {
+  cambiarTitulo("PanelEventos");
   return (
     <>
       <div>

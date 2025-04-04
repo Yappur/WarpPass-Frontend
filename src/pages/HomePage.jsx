@@ -1,8 +1,10 @@
 import React from "react";
 import Card from "../components/Card";
 import { IoTicket } from "react-icons/io5";
+import { cambiarTitulo } from "../helpers/cambiarTitulos";
 
 const HomePage = () => {
+  cambiarTitulo("HomePage");
   return (
     <div>
       <div className="hero text-black bg-white">

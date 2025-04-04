@@ -1,7 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { cambiarTitulo } from "../../helpers/cambiarTitulos";
 
 const HomeAdmin = () => {
+  cambiarTitulo("HomeAdminPage");
   const navigate = useNavigate();
 
   const handlePanelUsers = () => {
