@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import App404 from "../pages/App404";
-import AboutPage from "../pages/staticPages/AboutPage";
+// import AboutPage from "../pages/staticPages/AboutPage";
 import ContactPage from "../pages/staticPages/ContactPage";
 import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
@@ -33,7 +33,7 @@ const RoutesViews = () => {
     <Routes>
       {/* Rutas públicas */}
       <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
+      {/* <Route path="/about" element={<AboutPage />} /> */}
       <Route path="/contacto" element={<ContactPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
