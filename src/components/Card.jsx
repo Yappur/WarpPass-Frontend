@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 import axiosConfig from "../helpers/axios.config";
 
 const Card = () => {
   const [cargarEventos, setcargarEventos] = useState([]);
+  const navigate = useNavigate();
   const listaEventos = async () => {
     try {
       const response = await axiosConfig.get("/eventos/obtenerEventos");
@@ -18,11 +20,19 @@ const Card = () => {
     listaEventos();
   }, []);
 
+  const handleCardClick = (eventoId) => {
+    navigate(`/ver/evento/${eventoId}`);
+  };
+
   return (
     <div className="m-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {cargarEventos.map((evento) => {
         return (
-          <a href="/ver/evento" key={evento._id} className="block h-full">
+          <div
+            key={evento._id}
+            onClick={() => handleCardClick(evento._id)}
+            className="cursor-pointer block h-full"
+          >
             <div className="card bg-white shadow-lg hover:shadow-xl transition-shadow hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
               <div className="h-44 w-full overflow-hidden">
                 <img
@@ -46,7 +56,7 @@ const Card = () => {
                 </h2>
               </div>
             </div>
-          </a>
+          </div>
         );
       })}
     </div>

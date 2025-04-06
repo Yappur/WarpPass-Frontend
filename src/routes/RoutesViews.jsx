@@ -38,7 +38,7 @@ const RoutesViews = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/eventos" element={<GaleriaEventos />} />
-      <Route path="/eventos/:id" element={<VerEvento />} />
+      <Route path="/ver/evento/:id" element={<VerEvento />} />
 
       {/* Rutas de usuario */}
       <Route
