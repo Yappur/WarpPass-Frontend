@@ -3,6 +3,8 @@ import axiosConfig from "../../helpers/axios.config";
 
 const UserTables = () => {
   const [cargarUsuarios, setcargarUsuarios] = useState([]);
+  const [usuarioEditando, setUsuarioEditando] = useState(null);
+  const [rolSeleccionado, setRolSeleccionado] = useState("");
 
   const listaUsuarios = async () => {
     try {
@@ -16,6 +18,28 @@ const UserTables = () => {
   useEffect(() => {
     listaUsuarios();
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await axiosConfig.delete(
+        `/usuarios/eliminarUsuario/${id}`
+      );
+      alert(response.data.msg);
+      listaUsuarios();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const cambiarRol = async (id, nuevoRol) => {
+    try {
+      await axiosConfig.put(`/usuarios/cambiarRol/${id}`, { rol: nuevoRol });
+      listaUsuarios();
+    } catch (error) {
+      console.log(error);
+      alert("Error al cambiar el rol");
+    }
+  };
 
   return (
     <div>
@@ -35,7 +59,25 @@ const UserTables = () => {
                 <tr key={usuario._id}>
                   <td>{usuario.nombre}</td>
                   <td>{usuario.email}</td>
-                  <td>{usuario.rol}</td>
+                  <td>
+                    <select
+                      value={usuario.rol}
+                      onChange={(e) => cambiarRol(usuario._id, e.target.value)}
+                      className="select select-sm bg-gray-700 text-white shadow-lg shadow-indigo-500/50 hover:shadow-xl"
+                    >
+                      <option value="usuario">Usuario</option>
+                      <option value="productor">Productor</option>
+                      <option value="admin">Admin</option>
+                    </select>
+                  </td>
+                  <td>
+                    <button
+                      className="btn bg-red-600 hover:bg-red-800 text-white shadow-lg shadow-indigo-500/50 hover:shadow-xl active:scale-95 transition-all duration-300"
+                      onClick={() => handleDelete(usuario._id)}
+                    >
+                      Eliminar
+                    </button>
+                  </td>
                 </tr>
               );
             })}
