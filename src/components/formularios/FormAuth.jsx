@@ -161,7 +161,7 @@ const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
                 className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="nombre"
               >
-                Nombre
+                Nombre Y Apellido
               </label>
               <input
                 id="nombre"

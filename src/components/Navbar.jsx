@@ -116,12 +116,6 @@ const Navbar = () => {
             >
               Contacto
             </NavLink>
-            <NavLink
-              to="/about"
-              className="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Sobre Nosotros
-            </NavLink>
 
             {/* Enlaces específicos según rol */}
             {role === "admin" && (
