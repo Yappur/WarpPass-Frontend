@@ -116,10 +116,15 @@ const Navbar = () => {
             >
               Contacto
             </NavLink>
-
             {/* Enlaces específicos según rol */}
             {role === "admin" && (
               <>
+                <NavLink
+                  to="/eventos/crearEvento"
+                  className="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  ¡Crear Eventos!
+                </NavLink>
                 <NavLink
                   to="/admin/panelUsers"
                   className="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
@@ -138,6 +143,12 @@ const Navbar = () => {
             {role === "productor" && (
               <>
                 <NavLink
+                  to="/eventos/crearEvento"
+                  className="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  ¡Crear Eventos!
+                </NavLink>
+                <NavLink
                   to="/productor/mis-productos"
                   className="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
@@ -151,7 +162,6 @@ const Navbar = () => {
                 </NavLink>
               </>
             )}
-
             {role === "usuario" && (
               <>
                 {/* <NavLink
@@ -168,7 +178,6 @@ const Navbar = () => {
                 </NavLink> */}
               </>
             )}
-
             {/* Enlaces de sesión */}
             {isLogged ? (
               <div className="flex items-center space-x-4">

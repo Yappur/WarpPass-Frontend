@@ -69,11 +69,11 @@ const VerEvento = () => {
 
   return (
     <div className="container mx-auto p-4 max-w-6xl">
-      <div className="bg-white rounded-xl shadow-xl overflow-hidden">
+      <div className=" rounded-xl shadow-xl overflow-hidden">
         {/* Grid principal que divide contenido e imagen */}
-        <div className="grid md:grid-cols-2 gap-0">
+        <div className="grid md:grid-cols-2 gap-15">
           {/* Columna izquierda - Información del evento */}
-          <div className="p-6 md:p-8 flex flex-col justify-between">
+          <div className="bg-white p-6 md:p-8 flex flex-col justify-between">
             <div>
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 {evento.titulo}
@@ -117,30 +117,34 @@ const VerEvento = () => {
             </div>
 
             <div className="border-b border-gray-400 mt-6"></div>
-
-            {/* Botones de acción (si los necesitas) */}
-            <div className="mt-8 flex flex-wrap gap-3">
-              {evento.precio && (
-                <div className="bg-green-50 px-4 py-2 rounded-lg">
-                  <span className="text-green-800 font-semibold">
-                    Precio: ${evento.precio}
-                  </span>
-                </div>
-              )}
-              <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300">
-                Inscribirse
-              </button>
-            </div>
           </div>
 
           {/* Columna derecha - Imagen */}
-          <div className="h-full">
-            <div className="h-full w-full">
+          <div className="h-full object-cover">
+            <div className=" w-full">
               <img
                 src={evento.imagen || "/placeholder.svg"}
                 alt={evento.titulo}
                 className="w-full h-full object-cover object-center"
               />
+            </div>
+            <div className="bg-white p-6 md:p-8 flex flex-col justify-between">
+              {/* Botones de acción (si los necesitas) */}
+              <div className="mt-8 flex flex-wrap gap-3">
+                {evento.precio && (
+                  <div className="bg-green-50 px-4 py-2 rounded-lg">
+                    <span className="text-green-800 font-semibold">
+                      Precio: ${evento.precio}
+                    </span>
+                  </div>
+                )}
+                <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+                  Inscribirse
+                </button>
+              </div>
+              <p className="text-sm text-gray-500 mt-2">
+                Cantidad de personas: {evento.cantidad}
+              </p>
             </div>
           </div>
         </div>

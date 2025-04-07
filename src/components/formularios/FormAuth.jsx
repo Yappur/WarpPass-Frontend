@@ -284,6 +284,19 @@ const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
             </button>
           </div>
           <div>
+            <div className="border-b border-[#b2b205] my-4"></div>
+            {/* Botón de Google */}
+            <div className="mb-4">
+              <a
+                href="http://localhost:4000/auth/google"
+                className="bg-[#2F314E] hover:bg-[#1A1B2D] text-white font-bold py-2 px-4 rounded w-full flex justify-center items-center"
+              >
+                {isLogin
+                  ? "Iniciar Sesión con Google"
+                  : "Registrarse con Google"}
+              </a>
+            </div>
+
             <p className="text-center text-[#b2b205]">
               <a href="">
                 {isLogin ? "Ya tenes cuenta? Incia sesion" : "Iniciar Sesión"}

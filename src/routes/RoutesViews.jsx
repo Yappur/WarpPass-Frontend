@@ -5,6 +5,7 @@ import App404 from "../pages/App404";
 import ContactPage from "../pages/staticPages/ContactPage";
 import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
+import GoogleAuth from "../pages/auth/GoogleAuth";
 import GaleriaEventos from "../pages/eventos/GaleriaEventos";
 import VerEvento from "../pages/eventos/VerEvento";
 import CrearEvento from "../pages/eventos/CrearEvento";
@@ -37,6 +38,7 @@ const RoutesViews = () => {
       <Route path="/contacto" element={<ContactPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/auth/google" element={<GoogleAuth />} />
       <Route path="/eventos" element={<GaleriaEventos />} />
       <Route path="/ver/evento/:id" element={<VerEvento />} />
 
