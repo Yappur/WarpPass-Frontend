@@ -31,19 +31,19 @@ const Card = () => {
           <div
             key={evento._id}
             onClick={() => handleCardClick(evento._id)}
-            className="cursor-pointer block h-full"
+            className="cursor-pointer block h-full "
           >
-            <div className="card bg-white shadow-lg hover:shadow-xl transition-shadow hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
+            <div className="card bg-white shadow-lg hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col rounded-2xl">
               <div className="h-44 w-full overflow-hidden">
                 <img
                   src={evento.imagen}
                   alt="Evento"
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-center rounded-t-2xl"
                 />
               </div>
               <div className="card-body text-black p-4 flex flex-col flex-grow">
                 <div>
-                  <p className="text-[#444444] inline-flex items-center gap-1 bg-gray-100 p-2 rounded-lg">
+                  <p className="text-[#444444] inline-flex items-center gap-1 bg-gray-100 p-2">
                     <FaLocationDot className="text-lg flex-shrink-0" />
                     <span className="truncate">{evento.lugar}</span>
                   </p>

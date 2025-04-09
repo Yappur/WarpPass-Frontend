@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@375&family=Roboto+Condensed:wght@100..900&display=swap");
+
 @layer base {
   body {
     @apply bg-[#c4c4c4] text-white;
@@ -15,6 +17,11 @@
 }
 
 body {
-  background: linear-gradient(135deg, #111861, #ffff, #925800);
+  background: linear-gradient(
+    135deg,
+    #595e94 20%,
+    #eeeded31 50%,
+    #f091039f 100%
+  );
   min-height: 100vh;
 }

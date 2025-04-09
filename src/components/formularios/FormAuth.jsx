@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaGoogle, FaUser, FaLock } from "react-icons/fa";
+import { IoMail } from "react-icons/io5";
 import axiosConfig from "../../helpers/axios.config";
 
 const ROL_ROUTES = {
@@ -157,17 +158,17 @@ const FormRegisterLogin = ({
   };
 
   return (
-    <div className="container ml-auto mr-auto flex items-center justify-center mt-25">
+    <div className="container ml-auto mr-auto flex items-center justify-center mt-10">
       <div className="w-full md:w-1/2">
-        <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 mb-4">
+        <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 mb-10">
           {/* Campos de registro */}
           {!isLogin && (
-            <div className="mb-4">
+            <div className="mb-4 ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className=" text-gray-700 text-sm font-bold mb-2 flex "
                 htmlFor="nombre"
               >
-                Nombre Y Apellido
+                Nombre Y Apellido <FaUser className="ml-2 w-4 h-4" />
               </label>
               <input
                 id="nombre"
@@ -191,10 +192,10 @@ const FormRegisterLogin = ({
           {/* Email */}
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="flex text-gray-700 text-sm font-bold mb-2"
               htmlFor="email"
             >
-              Email
+              Email <IoMail className="ml-2 w-5 h-5 " />
             </label>
             <input
               id="email"
@@ -215,10 +216,10 @@ const FormRegisterLogin = ({
           {/* Contraseña */}
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="flex text-gray-700 text-sm font-bold mb-2"
               htmlFor="contrasenia"
             >
-              Contraseña
+              Contraseña <FaLock className="ml-2 w-4 h-4 " />
             </label>
             <input
               id="contrasenia"
@@ -246,10 +247,10 @@ const FormRegisterLogin = ({
           {!isLogin && (
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="flex text-gray-700 text-sm font-bold mb-2"
                 htmlFor="repetirContrasenia"
               >
-                Repetir Contraseña
+                Repetir Contraseña <FaLock className="ml-2 w-4 h-4 " />
               </label>
               <input
                 id="repetirContrasenia"
