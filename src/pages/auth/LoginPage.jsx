@@ -6,7 +6,11 @@ const LoginPage = () => {
   cambiarTitulo("LoginPage");
   return (
     <>
-      <FormAuth isLogin={true} />
+      <FormAuth
+        isLogin={true}
+        subtitulo={"¿No tenes una cuenta? "}
+        ruta={"/register"}
+      />
     </>
   );
 };

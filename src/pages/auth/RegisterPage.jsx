@@ -6,7 +6,12 @@ const RegisterPage = () => {
   cambiarTitulo("RegisterPage");
   return (
     <div>
-      <FormAuth isLogin={false} redirectPath="/login" />
+      <FormAuth
+        isLogin={false}
+        redirectPath="/login"
+        subtitulo={"¿Ya tenes una cuenta? "}
+        ruta={"/login"}
+      />
     </div>
   );
 };

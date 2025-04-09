@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaGoogle, FaUser, FaLock } from "react-icons/fa";
 import axiosConfig from "../../helpers/axios.config";
 
 const ROL_ROUTES = {
@@ -8,7 +9,12 @@ const ROL_ROUTES = {
   productor: "/",
 };
 
-const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
+const FormRegisterLogin = ({
+  isLogin = false,
+  redirectPath = "/login",
+  subtitulo,
+  ruta,
+}) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -278,30 +284,37 @@ const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
             <button
               type="submit"
               onClick={isLogin ? handleLogin : handleRegister}
-              className="bg-[#2F314E] hover:bg-[#1A1B2D] text-white font-bold py-2 px-4 rounded w-full"
+              className="bg-[#2F314E] hover:bg-[#1A1B2D] text-white font-bold py-2 px-4 rounded w-full transition-colors duration-500"
             >
               {isLogin ? "Iniciar Sesión" : "Registrarse"}
             </button>
           </div>
           <div>
-            <div className="border-b border-[#b2b205] my-4"></div>
+            <div className="border-b border-[#aaaaaa] my-4"></div>
             {/* Botón de Google */}
             <div className="mb-4">
               <a
                 href="http://localhost:4000/auth/google"
-                className="bg-[#2F314E] hover:bg-[#1A1B2D] text-white font-bold py-2 px-4 rounded w-full flex justify-center items-center"
+                className="border-1 border-black hover:bg-[#d5d5d89d] text-black font-bold py-2 px-4 rounded w-full flex justify-center items-center transition-colors duration-500"
               >
+                <FaGoogle className="text-black mr-2" />
                 {isLogin
                   ? "Iniciar Sesión con Google"
                   : "Registrarse con Google"}
               </a>
             </div>
 
-            <p className="text-center text-[#b2b205]">
-              <a href="">
-                {isLogin ? "Ya tenes cuenta? Incia sesion" : "Iniciar Sesión"}
-              </a>
-            </p>
+            <div className=" text-black  font-bold ">
+              <span className="text-center flex justify-center">
+                {subtitulo}
+                <a
+                  className="ml-2 underline hover:text-[#4b5c91b9] transition-colors duration-500"
+                  href={ruta}
+                >
+                  Click Aquí
+                </a>
+              </span>
+            </div>
           </div>
         </form>
       </div>
