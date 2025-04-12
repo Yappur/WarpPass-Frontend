@@ -95,7 +95,7 @@ const HomePage = () => {
         </div>
 
         {/* Decoración inferior */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2F314E] via-[#b2b205] to-[#2F314E]"></div>
+        <div className="absolute bottom-0 left-50 right-50 h-2  bg-gradient-to-r from-[#2F314E] via-[#b2b205] to-[#2F314E]"></div>
       </div>
 
       {/* Sección de eventos disponibles */}

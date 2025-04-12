@@ -69,7 +69,12 @@ const FormEvents = () => {
 
   return (
     <>
-      <div className="container ml-auto mr-auto flex items-center justify-center mt-25">
+      <div className="relative overflow-hidden mt-10 ">
+        <h1 className="text-center text-3xl font-bold text-yellow-500 underline uppercase p-4">
+          ¡Bienvenido a la seccion Crear Eventos!
+        </h1>
+      </div>
+      <div className="container ml-auto mr-auto flex items-center justify-center mt-5 mb-2 ">
         <div className="w-full md:w-1/2">
           <form
             className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -236,6 +241,16 @@ const FormEvents = () => {
             </div>
           </form>
         </div>
+      </div>
+      <div className=" text-withe font-bold mb-5 text-2xl">
+        <span className="text-center flex justify-center">
+          <a
+            className="ml-2 underline hover:text-[#4b5c91b9] transition-colors duration-500"
+            href="/eventos/misEventos"
+          >
+            ¡Mira tus Eventos Aquí!
+          </a>
+        </span>
       </div>
     </>
   );

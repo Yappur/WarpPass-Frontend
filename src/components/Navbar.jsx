@@ -151,13 +151,13 @@ const Navbar = () => {
                   ¡Crear Eventos!
                 </NavLink>
                 <NavLink
-                  to="/productor/mis-productos"
+                  to="/eventos/misEventos"
                   className="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Mis Eventos
                 </NavLink>
                 <NavLink
-                  to="/productor/ventas"
+                  to="/eventos/ventas"
                   className="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Ventas

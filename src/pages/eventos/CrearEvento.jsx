@@ -6,7 +6,7 @@ const CrearEvento = () => {
   cambiarTitulo("CrearEvento");
   return (
     <div>
-      <FormEvents />
+      <FormEvents ruta={"/eventos/misEventos"} />
     </div>
   );
 };
