@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { fadeIn, slideInLeft } from "../helpers/animate";
 import Card from "../components/Card";
 import { IoTicket } from "react-icons/io5";
-import { FaMusic, FaCalendarAlt, FaStar } from "react-icons/fa";
+import { FaCalendarAlt, FaStar } from "react-icons/fa";
 import { cambiarTitulo } from "../helpers/cambiarTitulos";
 
 const HomePage = () => {
   cambiarTitulo("HomePage");
+  const ref = useRef();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
+    slideInLeft(ref.current);
   }, []);
 
   return (
@@ -18,14 +21,8 @@ const HomePage = () => {
         <div className="container mx-auto px-4 py-12 sm:py-20">
           <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
             {/* Columna de imagen */}
-            <div
-              className={`lg:w-1/2 transition-all duration-1000 transform ${
-                isVisible
-                  ? "translate-x-0 opacity-100"
-                  : "-translate-x-20 opacity-0"
-              }`}
-            >
-              <div className="relative">
+            <div className="lg:w-1/2 transition-all duration-1000 transform ">
+              <div className="relative" ref={ref}>
                 <div className="absolute -inset-4 bg-[#2F314E]/10 rounded-lg blur-lg"></div>
                 <img
                   src="https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/03/09112202/Los-Redondos-vieja-1920.jpg"

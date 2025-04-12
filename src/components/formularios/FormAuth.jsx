@@ -168,7 +168,7 @@ const FormRegisterLogin = ({
                 className=" text-gray-700 text-sm font-bold mb-2 flex "
                 htmlFor="nombre"
               >
-                Nombre Y Apellido <FaUser className="ml-2 w-4 h-4" />
+                Nombre/s Y Apellido/s <FaUser className="ml-2 w-4 h-4" />
               </label>
               <input
                 id="nombre"
