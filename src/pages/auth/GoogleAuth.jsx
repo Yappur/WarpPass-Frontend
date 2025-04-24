@@ -23,7 +23,7 @@ const GoogleAuth = () => {
       const redirectPath = ROL_ROUTES[payload.rol] || "/";
       navigate(redirectPath);
     } else {
-      navigate("/login");
+      navigate("/");
     }
   }, []);
 

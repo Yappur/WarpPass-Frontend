@@ -100,9 +100,11 @@ const Navbar = () => {
           <div className="hidden md:flex md:items-center md:space-x-4">
             <NavLink
               to={getHomeRoute()}
-              className="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              className="text-white  hover:text-white px-3 py-2 rounded-md text-sm font-medium relative group"
             >
+              <span className="absolute bottom-8 left-0 w-full h-1 bg-[#ffffff5e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-450"></span>
               Inicio
+              <span className="absolute bottom-0 left-0 w-full h-1 bg-[#ffffff5e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-450"></span>
             </NavLink>
             <NavLink
               to="/eventos"
@@ -149,13 +151,13 @@ const Navbar = () => {
                   ¡Crear Eventos!
                 </NavLink>
                 <NavLink
-                  to="/productor/mis-productos"
+                  to="/eventos/misEventos"
                   className="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Mis Eventos
                 </NavLink>
                 <NavLink
-                  to="/productor/ventas"
+                  to="/eventos/ventas"
                   className="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Ventas

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import axiosConfig from "../helpers/axios.config";
+import { animarCards } from "../helpers/animate";
 
 const Card = () => {
   const [cargarEventos, setcargarEventos] = useState([]);
@@ -10,7 +11,6 @@ const Card = () => {
     try {
       const response = await axiosConfig.get("/eventos/obtenerEventos");
       setcargarEventos(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -19,6 +19,12 @@ const Card = () => {
   useEffect(() => {
     listaEventos();
   }, []);
+
+  useEffect(() => {
+    if (cargarEventos.length > 0) {
+      animarCards();
+    }
+  }, [cargarEventos]);
 
   const handleCardClick = (eventoId) => {
     navigate(`/ver/evento/${eventoId}`);
@@ -33,17 +39,17 @@ const Card = () => {
             onClick={() => handleCardClick(evento._id)}
             className="cursor-pointer block h-full"
           >
-            <div className="card bg-white shadow-lg hover:shadow-xl transition-shadow hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
+            <div className="card bg-white shadow-lg hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col rounded-2xl">
               <div className="h-44 w-full overflow-hidden">
                 <img
                   src={evento.imagen}
                   alt="Evento"
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-center rounded-t-2xl"
                 />
               </div>
               <div className="card-body text-black p-4 flex flex-col flex-grow">
                 <div>
-                  <p className="text-[#444444] inline-flex items-center gap-1 bg-gray-100 p-2 rounded-lg">
+                  <p className="text-[#444444] inline-flex items-center gap-1 bg-gray-100 p-2">
                     <FaLocationDot className="text-lg flex-shrink-0" />
                     <span className="truncate">{evento.lugar}</span>
                   </p>

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaGoogle, FaUser, FaLock } from "react-icons/fa";
+import { IoMail } from "react-icons/io5";
 import axiosConfig from "../../helpers/axios.config";
 
 const ROL_ROUTES = {
@@ -8,7 +10,12 @@ const ROL_ROUTES = {
   productor: "/",
 };
 
-const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
+const FormRegisterLogin = ({
+  isLogin = false,
+  redirectPath = "/login",
+  subtitulo,
+  ruta,
+}) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -151,17 +158,17 @@ const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
   };
 
   return (
-    <div className="container ml-auto mr-auto flex items-center justify-center mt-25">
+    <div className="container ml-auto mr-auto flex items-center justify-center mt-10">
       <div className="w-full md:w-1/2">
-        <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 mb-4">
+        <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 mb-10">
           {/* Campos de registro */}
           {!isLogin && (
-            <div className="mb-4">
+            <div className="mb-4 ">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className=" text-gray-700 text-sm font-bold mb-2 flex "
                 htmlFor="nombre"
               >
-                Nombre Y Apellido
+                Nombre/s Y Apellido/s <FaUser className="ml-2 w-4 h-4" />
               </label>
               <input
                 id="nombre"
@@ -185,10 +192,10 @@ const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
           {/* Email */}
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="flex text-gray-700 text-sm font-bold mb-2"
               htmlFor="email"
             >
-              Email
+              Email <IoMail className="ml-2 w-5 h-5 " />
             </label>
             <input
               id="email"
@@ -209,10 +216,10 @@ const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
           {/* Contraseña */}
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="flex text-gray-700 text-sm font-bold mb-2"
               htmlFor="contrasenia"
             >
-              Contraseña
+              Contraseña <FaLock className="ml-2 w-4 h-4 " />
             </label>
             <input
               id="contrasenia"
@@ -240,10 +247,10 @@ const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
           {!isLogin && (
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="flex text-gray-700 text-sm font-bold mb-2"
                 htmlFor="repetirContrasenia"
               >
-                Repetir Contraseña
+                Repetir Contraseña <FaLock className="ml-2 w-4 h-4 " />
               </label>
               <input
                 id="repetirContrasenia"
@@ -278,30 +285,37 @@ const FormRegisterLogin = ({ isLogin = false, redirectPath = "/login" }) => {
             <button
               type="submit"
               onClick={isLogin ? handleLogin : handleRegister}
-              className="bg-[#2F314E] hover:bg-[#1A1B2D] text-white font-bold py-2 px-4 rounded w-full"
+              className="bg-[#2F314E] hover:bg-[#1A1B2D] text-white font-bold py-2 px-4 rounded w-full transition-colors duration-500"
             >
               {isLogin ? "Iniciar Sesión" : "Registrarse"}
             </button>
           </div>
           <div>
-            <div className="border-b border-[#b2b205] my-4"></div>
+            <div className="border-b border-[#aaaaaa] my-4"></div>
             {/* Botón de Google */}
             <div className="mb-4">
               <a
                 href="http://localhost:4000/auth/google"
-                className="bg-[#2F314E] hover:bg-[#1A1B2D] text-white font-bold py-2 px-4 rounded w-full flex justify-center items-center"
+                className="border-1 border-black hover:bg-[#d5d5d89d] text-black font-bold py-2 px-4 rounded w-full flex justify-center items-center transition-colors duration-500"
               >
+                <FaGoogle className="text-black mr-2" />
                 {isLogin
                   ? "Iniciar Sesión con Google"
                   : "Registrarse con Google"}
               </a>
             </div>
 
-            <p className="text-center text-[#b2b205]">
-              <a href="">
-                {isLogin ? "Ya tenes cuenta? Incia sesion" : "Iniciar Sesión"}
-              </a>
-            </p>
+            <div className=" text-black  font-bold ">
+              <span className="text-center flex justify-center">
+                {subtitulo}
+                <a
+                  className="ml-2 underline hover:text-[#4b5c91b9] transition-colors duration-500"
+                  href={ruta}
+                >
+                  Click Aquí
+                </a>
+              </span>
+            </div>
           </div>
         </form>
       </div>
