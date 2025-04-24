@@ -1,28 +1,71 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+import axiosConfig from "../helpers/axios.config";
+import { animarCards } from "../helpers/animate";
 
 const Card = () => {
+  const [cargarEventos, setcargarEventos] = useState([]);
+  const navigate = useNavigate();
+  const listaEventos = async () => {
+    try {
+      const response = await axiosConfig.get("/eventos/obtenerEventos");
+      setcargarEventos(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    listaEventos();
+  }, []);
+
+  useEffect(() => {
+    if (cargarEventos.length > 0) {
+      animarCards();
+    }
+  }, [cargarEventos]);
+
+  const handleCardClick = (eventoId) => {
+    navigate(`/ver/evento/${eventoId}`);
+  };
+
   return (
-    <a href="/ver/evento">
-      <div className="card bg-white shadow-lg hover:shadow-5xl transition-shadow hover:-translate-y-2 transition-transform duration-600">
-        <figure>
-          <img
-            src="https://i0.statig.com.br/bancodeimagens/2o/yl/1v/2oyl1vo07twdwrjdmdymrns76.jpg"
-            alt="Evento"
-            className="w-full h-44 object-cover"
-          />
-        </figure>
-        <div className="card-body text-black ">
-          <p className="text-[#444444] flex items-center gap-1 bg-gray-100 p-2 rounded-lg w-30">
-            {" "}
-            <FaLocationDot className="text-lg" />
-            UBICACION
-          </p>
-          <h2 className="card-title">Card Title</h2>
-          <h3>Fecha</h3>
-        </div>
-      </div>
-    </a>
+    <div className="m-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {cargarEventos.map((evento) => {
+        return (
+          <div
+            key={evento._id}
+            onClick={() => handleCardClick(evento._id)}
+            className="cursor-pointer block h-full"
+          >
+            <div className="card bg-white shadow-lg hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col rounded-2xl">
+              <div className="h-44 w-full overflow-hidden">
+                <img
+                  src={evento.imagen}
+                  alt="Evento"
+                  className="w-full h-full object-cover object-center rounded-t-2xl"
+                />
+              </div>
+              <div className="card-body text-black p-4 flex flex-col flex-grow">
+                <div>
+                  <p className="text-[#444444] inline-flex items-center gap-1 bg-gray-100 p-2">
+                    <FaLocationDot className="text-lg flex-shrink-0" />
+                    <span className="truncate">{evento.lugar}</span>
+                  </p>
+                </div>
+                <h2 className="card-title text-lg font-semibold mt-2 line-clamp-2">
+                  {evento.titulo}
+                </h2>
+                <h2 className="text-sm mt-1">
+                  {new Date(evento.fecha).toLocaleDateString("es-AR")}
+                </h2>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
